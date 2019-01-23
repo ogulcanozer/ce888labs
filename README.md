@@ -2,7 +2,7 @@
 
 ## Lab 2
 
-### vehicles.py implemented.
+###### vehicles.py implemented.
 
 ![logo](./lab2/scatterplot.png?raw=true)
 
@@ -16,7 +16,7 @@ Histogram of the current fleet.
 
 Histogram of the proposed fleet.
 
-### bootstrap function is implemented in bootstrap.py.
+###### bootstrap function is implemented in bootstrap.py.
 
 ![logo](./lab2/bootstrap_confidence.png?raw=true)
 
