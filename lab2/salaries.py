@@ -25,8 +25,8 @@ if __name__ == "__main__":
 	sns_plot.axes[0,0].set_ylim(0,)
 	sns_plot.axes[0,0].set_xlim(0,)
 
-	sns_plot.savefig("scaterplot.png",bbox_inches='tight')
-	sns_plot.savefig("scaterplot.pdf",bbox_inches='tight')
+	sns_plot.savefig("s_scaterplot.png",bbox_inches='tight')
+	sns_plot.savefig("s_scaterplot.pdf",bbox_inches='tight')
 
 	data = df.values.T[1]
 	
@@ -43,8 +43,8 @@ if __name__ == "__main__":
 	axes.set_xlabel('Millons of pounds in sales') 
 	axes.set_ylabel('Sales count')
 
-	sns_plot2.savefig("histogram.png",bbox_inches='tight')
-	sns_plot2.savefig("histogram.pdf",bbox_inches='tight')
+	sns_plot2.savefig("s_histogram.png",bbox_inches='tight')
+	sns_plot2.savefig("s_histogram.pdf",bbox_inches='tight')
 
 
 	
