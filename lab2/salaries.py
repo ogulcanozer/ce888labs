@@ -1,3 +1,6 @@
+#_______________________________________________________________________________
+# salaries.py | CE888 lab2     Ogulcan Ozer. 
+#_______________________________________________________________________________
 import matplotlib
 matplotlib.use('Agg')
 import pandas as pd
@@ -5,7 +8,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
-
+#-------------------------------------------------------------------------------
+# Functions
+#-------------------------------------------------------------------------------
 def mad(arr):
     """ Median Absolute Deviation: a "Robust" version of standard deviation.
         Indices variabililty of the sample.
@@ -16,7 +21,9 @@ def mad(arr):
     med = np.median(arr)
     return np.median(np.abs(arr - med))
 
-
+#-------------------------------------------------------------------------------
+# Main program.
+#-------------------------------------------------------------------------------
 if __name__ == "__main__":
 	df = pd.read_csv('./customers.csv')
 	print((df.columns))
@@ -46,5 +53,7 @@ if __name__ == "__main__":
 	sns_plot2.savefig("s_histogram.png",bbox_inches='tight')
 	sns_plot2.savefig("s_histogram.pdf",bbox_inches='tight')
 
-
+#-------------------------------------------------------------------------------
+# End of salaries.py
+#-------------------------------------------------------------------------------
 	

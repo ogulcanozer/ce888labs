@@ -1,10 +1,16 @@
+#_______________________________________________________________________________
+# bootstrap.py | CE888 lab2     Ogulcan Ozer. 
+#_______________________________________________________________________________
+
 import matplotlib
 matplotlib.use('Agg')
 import pandas as pd
 import seaborn as sns
 import numpy as np
 
-
+#-------------------------------------------------------------------------------
+# Functions
+#-------------------------------------------------------------------------------
 def boostrap(sample, sample_size, iterations, ci):
         
         means = np.zeros(iterations)
@@ -12,16 +18,19 @@ def boostrap(sample, sample_size, iterations, ci):
         lw = (100-ci)/2 #Get the lower percentile from ci
         up = lw + ci #Get the upper percentile
         for iteration in range(0,iterations):
+                #Get new sample
                 new_sample = np.random.choice(sample, size=sample_size, replace=True)
                 means[iteration] = np.mean(new_sample)
-                
+               
         data_mean = np.mean(means)
         lower = np.percentile(means, lw)
         upper = np.percentile(means, up)
         
         return data_mean, lower, upper
 
-
+#-------------------------------------------------------------------------------
+# Main program.
+#-------------------------------------------------------------------------------
 if __name__ == "__main__":
         
         #Boostrap Exercise 1
@@ -36,6 +45,7 @@ if __name__ == "__main__":
 		boots.append([i, boot[2], "upper"])
 		
 	df_boot = pd.DataFrame(boots, columns=['Boostrap Iterations', 'Mean', "Value"])
+        #Plot the mean and the CI of the bootstrap iterations and save the figure.
 	sns_plot = sns.lmplot(df_boot.columns[0], df_boot.columns[1], data=df_boot, fit_reg=False, hue="Value")
 	sns_plot.axes[0, 0].set_ylim(0,)
 	sns_plot.axes[0, 0].set_xlim(0, 100000)
@@ -52,16 +62,18 @@ if __name__ == "__main__":
 	current = []
 	c_data = df.values.T[0]
 	print(c_data)
+	#Get the mean and the CI of the current fleet
 	current = boostrap(c_data, c_data.shape[0], 100000 , 95 )
 	c_mean = current[0]
 	c_lower = current[1]
 	c_upper = current[2]
 
-        #Proposed Fleet
+        #New Fleet
 	new = []
 	n_data = df.values.T[1]
 	n_data = n_data[np.logical_not(np.isnan(n_data))]
 	print(n_data)
+	#Get the mean and the CI of the new fleet
 	new = boostrap(n_data, n_data.shape[0], 100000, 95 )
 	n_mean = new[0]
 	n_lower = new[1]
@@ -74,4 +86,6 @@ if __name__ == "__main__":
 	print("Lower difference :")
 	print(n_lower-c_lower)
 
-#End
+#-------------------------------------------------------------------------------
+# End of bootstrap.py
+#-------------------------------------------------------------------------------

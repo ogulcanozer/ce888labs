@@ -1,8 +1,16 @@
+#_______________________________________________________________________________
+# vehicles.py | CE888 lab2     Ogulcan Ozer. 
+#_______________________________________________________________________________
+
 import matplotlib
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+
+#-------------------------------------------------------------------------------
+# Main program.
+#-------------------------------------------------------------------------------
 
 #Read the .csv file
 df = pd.read_csv('./vehicles.csv')
@@ -36,3 +44,6 @@ axes.set_ylabel('Proposed Fleet Count')
 pf_plot.savefig("pf_histogram.png",bbox_inches='tight')
 pf_plot.savefig("pf_histogram.pdf",bbox_inches='tight')
 
+#-------------------------------------------------------------------------------
+# End of vehicles.py
+#-------------------------------------------------------------------------------
