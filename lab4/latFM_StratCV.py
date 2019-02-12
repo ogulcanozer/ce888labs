@@ -1,5 +1,5 @@
 #_______________________________________________________________________________
-# latFM.py | CE888 lab4     Ogulcan Ozer.  | UNFINISHED. check -> sss
+# latFM_StratCV.py | CE888 lab4     Ogulcan Ozer.  | UNFINISHED. check -> sss
 #_______________________________________________________________________________
 import pandas as pd
 import numpy as np
@@ -76,17 +76,19 @@ for i in range(1,3):##Decide later
     ## Cross Validation splits
     K_fold = 10
     #**************************
-    total_ratings = df.iloc[:,0].sum()
-    print(df.iloc[:,0])
     df.sort_values([0], inplace=True)
-    print(df.iloc[:,0])
-    print(total_ratings)
     #***************************
     org_data = df.to_numpy(copy=True)
     y = org_data[:,0]
     X = org_data[:,1:]
     print(X.shape)
     print(y.shape)
+    ##
+    ## Str. Kfold splits each validation set to 2499 rows. In total there are 24983 rows. 
+    ## Training and validation data always add up to 24983, so the validation sets
+    ## share data between them. Minimum 7 rows that is shared between all, or 63 rows that
+    ## are shared between 2 pairs of validation sets.
+    ##
     ## Stratified Cross Validation.
     sss = StratifiedShuffleSplit(n_splits=K_fold,random_state=0)
     sss.get_n_splits(X,y)
@@ -98,11 +100,13 @@ for i in range(1,3):##Decide later
         val_data = pd.DataFrame(df.iloc[test_index]).to_numpy(copy=True)
         val_data = val_data[:,1:]
         v_df = pd.DataFrame(val_data)
+        print('CROSSVAL: ',cv_no , 'ROWS: ', val_data.shape[0])
         print('VAL: ', v_df.head())
         #Splitted training set.
         data = pd.DataFrame(df.iloc[train_index]).to_numpy(copy=True)
         data = data[:,1:]
         d_df = pd.DataFrame(data)
+        print('CROSSVAL:',cv_no, 'ROWS: ', data.shape[0])
         print('DATA: ', d_df.head())
         #Save and change the validation set values to 99.
         idx, values, new_val = make_validate(val_data,data.shape[0])
@@ -112,6 +116,7 @@ for i in range(1,3):##Decide later
         print('NEW_VAL: ', nv_df.head())
         #Concatenate the changed validation set(new_val) to the training set.
         all_data = np.concatenate((data,new_val), axis=0)
+        print('ALLDATA ROWS: ', all_data.shape[0])
         n_df = pd.DataFrame(all_data)
         print('ALL: ', n_df.head())
         ##
@@ -138,5 +143,5 @@ for i in range(1,3):##Decide later
 print(factor_err)
 
 #-------------------------------------------------------------------------------
-# End of latFM.py
+# End of latFM_StratCV.py
 #-------------------------------------------------------------------------------
