@@ -1,24 +1,35 @@
 # ce888labs
 
+## Lab 1
+
+Python warmup.
+
 ## Lab 2
 
-###### vehicles.py implemented.
+Bootstrapping.
 
-![logo](./lab2/scatterplot.png?raw=true)
+## Lab 3
 
-Scatter plot of current fleet and proposed fleet, located in vehicles.csv
+Using classifiers and regressors.
 
-![logo](./lab2/cf_histogram.png?raw=true)
+## Lab 4
 
-Histogram of the current fleet.
+Recommender systems, latent factor modelling.
 
-![logo](./lab2/pf_histogram.png?raw=true)
+## Lab 6
 
-Histogram of the proposed fleet.
+Clustering w/ K-Means, DBScan. Principal Component Analysis (PCA).
 
-###### bootstrap function is implemented in bootstrap.py.
+## Lab 7
 
-![logo](./lab2/bootstrap_confidence.png?raw=true)
+Transfer learning w/ Convolutional Neural Networks (CNN). 
 
-Bootstrap confidence plot.
+## Lab 8
+
+Training CNNs and experimenting with Dropout.
+
+## Lab 9
+
+Generative Adversarial Networks and Variational Autoencoders.
+
 
