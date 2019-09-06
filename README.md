@@ -1,5 +1,7 @@
 # ce888labs
 
+CE888 - Data Science and Decision Making lab experiments.
+
 ## Lab 1
 
 Python warmup.
